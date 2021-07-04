@@ -70,6 +70,12 @@ def datetime_to_str(dt_obj):
     """
     return str(dt_obj.date())[:10]
 
+def timefloat_to_str(ts):
+    """
+    针对time.time()返回的浮点型时间戳，返回标准日期格式。
+    """
+    timestruct = time.localtime(ts)
+    return time.strftime('%Y-%m-%d %H:%M:%S', timestruct)
 
 def timestamp_to_str(ts):
     """

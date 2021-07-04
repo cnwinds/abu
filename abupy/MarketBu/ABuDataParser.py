@@ -277,21 +277,20 @@ class HBTCParser(object):
         # 为AbuDataParseWrap准备类必须的属性序列
         if len(data) > 0:
             # 时间日期序列
-            self.date = [item[0] for item in data]
+            self.date = [item['id'] for item in data]
             # 开盘价格序列
-            self.open = [item[1] for item in data]
+            self.open = [item['open'] for item in data]
             # 最高价格序列
-            self.high = [item[2] for item in data]
+            self.high = [item['high'] for item in data]
             # 最低价格序列
-            self.low = [item[3] for item in data]
+            self.low = [item['low'] for item in data]
             # 收盘价格序列
-            self.close = [item[4] for item in data]
+            self.close = [item['close'] for item in data]
             # 成交量序列
-            self.volume = [item[5] for item in data]
+            self.volume = [item['vol'] for item in data]
 
             # 时间日期进行格式转化，转化为如2017-07-26格式字符串
-            self.date = list(map(lambda date: ABuDateUtil.fmt_date(date), self.date))
-
+            self.date = list(map(lambda date: ABuDateUtil.timefloat_to_str(date), self.date))
 
 class BDParser(object):
     """bd数据源解析类"""

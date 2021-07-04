@@ -194,7 +194,8 @@ def _tc_search(search_match, search_code, search_result):
         search_result['btc'] = u'比特币'
     if fnmatch(u'莱特币', search_match) or 'ltc' == search_code:
         search_result['ltc'] = u'莱特币'
-
+    if fnmatch(u'狗币', search_match) or 'doge' == search_code:
+        search_result['doge'] = u'狗币'
 
 def search_to_symbol_dict(search, fast_mode=False):
     """

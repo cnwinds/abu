@@ -53,7 +53,7 @@ class WidgetSymbolChoice(WidgetBase):
                             u'港股': hk_seed_symbol,
                             u'国内': fcn_seed_symbol,
                             u'国际': fgb_seed_symbol,
-                            u'币类': [u'比特币:btc', u'莱特币:ltc']}
+                            u'币类': [u'比特币:btc', u'莱特币:ltc', u'狗币:doge']}
 
         # 一个市场一个tab，tab中的symbol为沙盒中的symbol
         self.market_widget_tab = widgets.Tab()

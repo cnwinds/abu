@@ -195,7 +195,7 @@ def _all_tc_symbol():
     获取币类symbol，注意这里只取比特币与莱特币，可自行扩展其它币种
     :return:
     """
-    return ['btc', 'ltc']
+    return ['btc', 'ltc', 'doge']
 
 
 def all_symbol(market=None, ss=False, index=False, value=True):
