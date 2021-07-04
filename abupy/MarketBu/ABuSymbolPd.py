@@ -129,7 +129,8 @@ def _make_kl_df(symbol, data_mode, n_folds, start, end, benchmark, save):
 
     if df is not None:
         # 规避重复交易日数据风险，subset只设置date做为滤除重复
-        df.drop_duplicates(subset=['date'], inplace=True)
+        # 虚拟货币以分钟为单位，不能按照日去重
+        # df.drop_duplicates(subset=['date'], inplace=True)
         # noinspection PyProtectedMember
         if not ABuEnv._g_enable_example_env_ipython or 'atr14' not in df.columns or 'atr21' not in df.columns:
             # 非沙盒环境计算, 或者是沙盒但数据本身没有atr14，atr21

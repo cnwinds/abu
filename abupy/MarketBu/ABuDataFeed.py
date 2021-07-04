@@ -407,8 +407,8 @@ class SNFuturesGBApi(FuturesBaseMarket, SupportMixin):
 class HBApi(TCBaseMarket, SupportMixin):
     """hb数据源，支持币类，比特币，莱特币"""
 
-    # K_NET_BASE = 'https://www.huobi.com/qt/staticmarket/%s_kline_100_json.js?length=%d'
-    K_NET_BASE = 'https://api.huobi.pro/market/history/kline?period=1day&size=%d&symbol=%susdt'
+    # K_NET_BASE = 'https://api.huobi.pro/market/history/kline?period=1day&size=%d&symbol=%susdt'
+    K_NET_BASE = 'https://api.huobi.pro/market/history/kline?period=15min&size=%d&symbol=%susdt'
     def __init__(self, symbol):
         """
         :param symbol: Symbol类型对象
@@ -430,12 +430,14 @@ class HBApi(TCBaseMarket, SupportMixin):
                                                ABuDateUtil.current_str_date()) / 365)
             req_cnt = folds * ABuEnv.g_market_trade_year
 
+        req_cnt = 2000
         url = HBApi.K_NET_BASE % (req_cnt, self._symbol.symbol_code)
         data = ABuNetWork.get(url=url, timeout=K_TIME_OUT).json()
         data = data['data']
         kl_df = self.data_parser_cls(self._symbol, data).df
         if kl_df is None:
             return None
+        kl_df = kl_df.sort_index()
         return TCBaseMarket._fix_kline_pd(kl_df, n_folds, start, end)
 
     def minute(self, *args, **kwargs):

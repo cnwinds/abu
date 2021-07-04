@@ -36,7 +36,9 @@ def show_msg(title, msg):
     :param title: 弹窗标题
     :param msg: 弹窗信息
     """
-    MainWindow(to_native_str(title), to_native_str(msg))
+    # MainWindow(to_native_str(title), to_native_str(msg))
+    # 暂时屏蔽托盘消息功能
+    pass
 
 
 def socket_bind_recv(socket_fn, cmd_handler):
